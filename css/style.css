@@ -1,2 +1,30 @@
-h1 {
-  color: red; }
+@charset "UTF-8";
+/*! utilizando aninhamento */
+#content div, #content h1 {
+  color: #fff; }
+#content a {
+  color: #ccc; }
+  #content a:visited {
+    text-decoration: none; }
+  #content a:hover {
+    text-decoration: none; }
+#content .teste {
+  font-size: 12px; }
+#content_principal {
+  color: #fff; }
+#content_final {
+  color: #fff; }
+
+/*! Utilizando a Interpolação com Sass */
+#content {
+  color: #ccc;
+  font-size: 14px; }
+
+/*! Criando namespace para propriedades*/
+.teste-name-space {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 20px; }
+
+/*# sourceMappingURL=style.css.map */

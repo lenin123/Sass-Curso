@@ -1,4 +1,46 @@
-$cor: red;
-h1 {
-    color: $cor;
+/*! utilizando aninhamento */
+#content {
+  div, h1 {
+    color: #fff;
+  }
+  a {
+    //utilizando o seletor pai com &
+    color: #ccc;
+    &:visited {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .teste {
+    font-size: 12px;
+  }
+  &_principal{
+    color: #fff;
+  }
+  &_final{
+    color: #fff;
+  }
+}
+
+$interpolacao: 'Interpolação com Sass';
+/*! Utilizando a #{$interpolacao} */
+
+$cor: #ccc;
+$font-size: 'font-size';
+
+#content {
+  color: $cor;
+  #{$font-size}: 14px;
+}
+
+/*! Criando namespace para propriedades*/
+.teste-name-space {
+  padding: {
+    top: 10px;
+    bottom: 20px;
+    left: 30px;
+    right: 20px;
+  };
 }

@@ -1,0 +1,40 @@
+$cor-base: #d75893;
+$cor-secundaria: #fff;
+
+body{
+    margin: 0;
+}
+
+#menu{
+    float: left;
+    background-color: $cor-base;
+    width: 100%;
+    ul {
+        float: right;
+        list-style: none;
+        margin: 0 auto;
+        padding: {
+            top: 10px;
+            right: 5px;
+            bottom: 10px;
+            left: 5px;
+        }
+
+        li {
+            text-decoration: none;
+            display: inline-block;
+            padding: 0 20px;
+            a {
+                font-size: 18px;
+                color: $cor-secundaria;
+                text-decoration: none;
+                padding: 10px 5px;
+
+                &:hover, &:focus {
+                    color: $cor-base;
+                    background-color: $cor-secundaria;
+                } 
+            }
+        }
+    }
+}
