@@ -44,3 +44,90 @@ $font-size: 'font-size';
     right: 20px;
   };
 }
+
+/*! Utilizando o import e arquivos*/
+@import 'style-menu.scss';
+
+.teste-import {
+  color: $cor-base;
+}
+
+/*! Utilizando o import com conceito de partials*/
+@import 'variaveis';
+
+.teste-import-partials {
+  font-size: $tamanho-font-2;
+}
+
+/*! Criando o mixins */
+
+//Mixin simples
+@mixin estrutura-botao {
+  float: left;
+  width: 20%;
+  color: #ccc;
+}
+
+.btn-teste-mixin-simples {
+  @include estrutura-botao();
+}
+
+//Mixin complexo
+@mixin estrutura-botao-complexa($posicao, $largura, $cor) {
+  float: $posicao;
+  width: $largura;
+  color: $cor;
+}
+
+.btn-teste-mixin-complexa {
+  @include estrutura-botao-complexa(left,30%, #ddd);
+}
+
+//Mixin complexo parametro fixo
+@mixin estrutura-botao-complexa-fixo($posicao, $largura, $cor:#fff) {
+  float: $posicao;
+  width: $largura;
+  color: $cor;
+}
+
+.btn-teste-mixin-complexa-fixo {
+  @include estrutura-botao-complexa-fixo(left,30%);
+}
+
+/*! Criando os extends */
+
+// Extende de extensão direta
+%btn-sucesso{
+  float: left;
+  width: 20%;
+  color: green;
+}
+
+.btn-teste-extend{
+  @extend %btn-sucesso;
+}
+
+// Extende de extensão com hierarquia
+
+%btn{
+  float: left;
+  width: 20%;
+}
+
+%btn-sucesso-hierarquia{
+  color: green;
+}
+
+.btn-hierarquia{
+  @extend %btn;
+}
+.btn-teste-extend-hierarquia{
+  @extend %btn;
+  @extend %btn-sucesso-hierarquia;
+}
+
+// Extende de extensão com hierarquia de class
+.btn-teste-extend-hierarquia-class{
+  @extend .btn-teste-extend-hierarquia;
+  font-size: 12px;
+}
