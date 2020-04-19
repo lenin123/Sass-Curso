@@ -41,3 +41,28 @@
 }
 
 @include menu($cor-base, $cor-secundaria, 0px 30px);
+
+
+.linha {
+    margin-left: auto;
+    margin-right: auto;
+}
+  %col-l{
+      margin-left: auto;
+      left: auto;
+      right: auto;
+      float: left;
+  }
+  $cont: 1;
+  $colunas: 12;
+  $tam-coluna: 100% / $colunas;
+  $aux: $colunas;   
+  @while $cont <= $aux{
+    .col-md-#{$colunas}{
+      width: $tam-coluna * $colunas;
+      @extend %col-l;
+      background: #dfd;
+    }
+    $cont: $cont + 1;
+    $colunas: $colunas - 1;
+  }

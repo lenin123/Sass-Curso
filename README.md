@@ -50,3 +50,8 @@ feito a extenção, podendo ser num conseito de classe(Orientação objeto) ou n
         color: desaturate(read, 50%) // vermelho  
     * alterar a tonalidade de cor adjust-hue, exemplo:
         color: adjust-hue(read, 50%) // vermelho  
+
+
+# Funções
+* As funções são bem similares aos mixins a diferência é que temos um retorno.
+* Visualizar as funções padrões existentes no arquivo de funções padrões.

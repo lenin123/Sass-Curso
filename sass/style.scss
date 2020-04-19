@@ -131,3 +131,144 @@ $font-size: 'font-size';
   @extend .btn-teste-extend-hierarquia;
   font-size: 12px;
 }
+
+
+/*! Criando o estrutura de if e else */
+@mixin tema($cor) {
+  @if ($cor == #ccc){
+      background-color: lighten;
+      color: $cor;
+  } @else if ($cor == #dfd){
+      background-color: blue;
+      color: $cor;
+  } @else {
+      background-color: red;
+      color: $cor;
+  }
+}
+
+$cor-condicao: #dfd;
+body {
+  @include tema($cor-condicao);
+}
+
+@mixin colorir ($cor, $propriedade: background, $tom: 4){
+  @if($tom == 1){
+    #{$propriedade}: lighten($cor, 40%);
+  }@else if($tom == 2){
+    #{$propriedade}: lighten($cor, 20%);
+  }@else if($tom == 3){
+    #{$propriedade}: lighten($cor, 10%);
+  }@else if($tom == 4){
+    #{$propriedade}: lighten($cor, 0%);
+  }@else if($tom == 5){
+    #{$propriedade}: darken($cor, 15%);
+  }@else if($tom == 6){
+    #{$propriedade}: darken($cor, 20%);
+  }
+}
+body{
+  @include colorir(yellow, color, 2);
+  @include colorir(black);
+}
+
+/*! Criando o estrutura de repetição for, each e while */
+
+// for
+@for $i from 1 to 5 {
+  .teste-for-#{$i} {
+    background-color: #dfd;
+    font-size: 5px * $i;
+    color: #f45;
+  }
+}
+
+//each
+$lista-cores: (red, yellow, black);
+$cont: 1;
+@each $cor in $lista-cores{
+  .teste-#{$cont} {
+    background: $cor; 
+  }
+  $cont: $cont + 1;
+}
+
+@each $thema in manha, tarde, noite, dia{
+	@if $thema == manha{
+		$background: white !global;
+	}@else if $thema == tarde {
+		$background: blue !global;
+	}@else if $thema == noite {
+		$background: black !global;
+	}@else{
+		$background: gray !global;
+	}
+	.bg-#{$thema}{
+		background: $background;
+	}
+}
+
+
+//while
+$cont: 1;
+@while $cont < 5{
+  .item-teste-while-#{$cont}{
+    width: 50px * $cont;
+  }
+  $cont: $cont + 1;
+}
+
+
+/*! Criando funções */
+
+// Com parametros sem parametros default
+@function quadrado($valor){
+  $res: $valor * $valor;
+  @return $res;
+}
+h1{
+  font-size: quadrado(6) + px;
+}
+h1 { 
+  font-size: 36px; 
+}
+
+// Com parametros e com parametros default
+@function quadrado($valor, $und: px){
+  $res: $valor * $valor;
+  @return $res + $und;
+}
+h1{
+  font-size: quadrado(6);
+}
+h1 { 
+  font-size: 36em; 
+}
+h2{
+  font-size: quadrado(6, em);
+}
+
+//Função de cubo
+@function cubo($valor, $medida){
+  $res: $valor * $valor * $valor + (#{$medida});
+	@return $res;
+}
+
+h1{
+  font-size: cubo(4, 'px' );
+}
+
+//Função de potência
+@function potencia($base, $expoente: 2, $unidade: px){
+  $cont: 1;
+  $resultado: $base;
+  @while($cont<$expoente){
+    $resultado: $resultado * $base;
+    $cont: $cont + 1;
+  }
+  @return $resultado + (#{$unidade});
+}
+
+.teste-potencia{
+  width: potencia(10, 2, '%');
+}
